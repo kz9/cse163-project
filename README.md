@@ -1,5 +1,4 @@
 # Research Questions
----
 
 1. Are there any points in time from which the number of terrorist attacks dramatically increase?
     - If there are, we want to find out exactly what was going on at this specific point in time to
@@ -20,7 +19,6 @@
 
 
 ## Dataset
----
 
 The dataset that we are using is the Global Terrorism Database. It is provided by the University
 of Maryland. The data for the events goes back from 1970 to the end of 2017, with 181,692 total
