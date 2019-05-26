@@ -48,10 +48,10 @@ These questions and the accompanying visualizations will allow us to observe wha
 ## Methodology
 
 **Make one or several plots for each question**:
-    1. Plot the total number of attacks over the years and find any times where they drastically increased. We can then see what major events happened around that time that may have had a direct influence on the number of attacks.
-    2. Separate the attacks into several major types and make a plot that contains a line for each different kind of attack. We can then try to see things like if any kind of attack is “disappearing”, if a certain kind of attack is increasing in number, or how the overall amount of different types compare to each other.
-    3. Use geographical data to visualize the number of attacks using a heat map, possibly in different years as well, and see what places tend to have more attacks, or places that have a lot of attacks that we don’t hear about.
-    4. Plot data where the timeframe of the plot is a single year, possibly plotting several years on the same graph and observing whether certain times of the year can have an influence on attacks. It doesn’t seem like something that could have an effect but it would be very interesting if we did see a pattern.
+1. Plot the total number of attacks over the years and find any times where they drastically increased. We can then see what major events happened around that time that may have had a direct influence on the number of attacks.
+2. Separate the attacks into several major types and make a plot that contains a line for each different kind of attack. We can then try to see things like if any kind of attack is “disappearing”, if a certain kind of attack is increasing in number, or how the overall amount of different types compare to each other.
+3. Use geographical data to visualize the number of attacks using a heat map, possibly in different years as well, and see what places tend to have more attacks, or places that have a lot of attacks that we don’t hear about.
+4. Plot data where the timeframe of the plot is a single year, possibly plotting several years on the same graph and observing whether certain times of the year can have an influence on attacks. It doesn’t seem like something that could have an effect but it would be very interesting if we did see a pattern.
 We are planning on adding interactivity for the plots as well, where the variables in the plots can be changed by a user so that the relationship between two chosen variables can be observed.
 
 ## Work Plan
