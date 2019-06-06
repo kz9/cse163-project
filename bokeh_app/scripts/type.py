@@ -1,39 +1,61 @@
 import pandas as pd
+import hvplot.pandas
 import pandas_bokeh
 from bokeh.plotting import figure
 from bokeh.layouts import column, row, WidgetBox
-from bokeh.models import Panel
-from bokeh.models import ColumnDataSource
-from bokeh.models.widgets import RangeSlider
+from bokeh.models import Panel, ColumnDataSource, CategoricalColorMapper
+from bokeh.palettes import brewer, Spectral6, inferno
+from bokeh.transform import factor_cmap
+from bokeh.models.widgets import RangeSlider, CheckboxGroup
 
 
 def type_tab(df):
-    year = RangeSlider(start=1970, end=2017, value=(1970, 2017), step=1,
-                       title="Year Range")
+    unique_types = list(df.attacktype1_txt.unique())
+    palette = brewer['Spectral'][len(unique_types)]
+    colormap = {unique_types[i]: palette[i] for i in range(len(unique_types))}
 
-    def make_data(df, start=1970, end=2017):
-        modified = df.groupby('iyear', as_index=False).count()
-        modified = modified[(modified['iyear'] >= start) &
-                            (modified['iyear'] <= end)]
-        return ColumnDataSource(modified)
-
-    src = make_data(df)
-
-    def make_plot(src):
-        p = figure(plot_height=800, plot_width=800,
-                   title='Total attacks over years',
-                   x_axis_label='Years',
-                   y_axis_label='Attacks')
-        p.line(x='iyear', y='eventid', source=src, line_width=2)
-        return p
+    def make_data(df, start=1970, end=2017, types=unique_types):
+        modified = df[(df['iyear'] >= start) &
+                      (df['iyear'] <= end)].\
+            groupby(['iyear', 'attacktype1_txt'], as_index=False).count()
+        modified = modified[modified['attacktype1_txt'].isin(types)]
+        source = {}
+        for i in range(len(types)):
+            if 'x' in source.keys():
+                source['x'].append(list(modified[modified['attacktype1_txt'] == types[i]].iyear))
+                source['y'].append(list(modified[modified['attacktype1_txt'] == types[i]].eventid))
+                source['type'].append(list(modified[modified['attacktype1_txt'] == types[i]].attacktype1_txt.unique()))
+                source['colors'].append(colormap[types[i]])
+            else:
+                source['x'] = [list(modified[modified['attacktype1_txt'] == types[i]].iyear)]
+                source['y'] = [list(modified[modified['attacktype1_txt'] == types[i]].eventid)]
+                source['type'] = [list(modified[modified['attacktype1_txt'] == types[i]].attacktype1_txt.unique())]
+                source['colors'] = [colormap[types[i]]]
+        return ColumnDataSource(source)
 
     def update():
-        new_src = make_data(df, year.value[0], year.value[1])
+        selected_types = [types.labels[i] for i in types.active]
+        new_src = make_data(df, year.value[0], year.value[1], selected_types)
         src.data.update(new_src.data)
 
-    year.on_change('value', lambda attr, old, new: update())
-    p = make_plot(src)
+    year = RangeSlider(start=1970, end=2017, value=(1970, 2017), step=1,
+                       title="Year Range")
+    types = CheckboxGroup(labels=unique_types,
+                          active=list(range(len(unique_types))))
+    src = make_data(df)
 
-    tab = Panel(child=row(year, p), title='Total Attacks')
+    p = figure(plot_height=800, plot_width=800,
+               title='Attack Types Distrubuted Over Year',
+               x_axis_label='Years',
+               y_axis_label='Types')
+    p.multi_line(xs='x', ys='y', source=src,
+                 line_color='colors', line_width=2,
+                 legend='type')
+
+    year.on_change('value', lambda attr, old, new: update())
+    types.on_change('active', lambda attr, old, new: update())
+    controls = WidgetBox(year, types)
+
+    tab = Panel(child=row(controls, p), title='Attack Types')
 
     return tab
