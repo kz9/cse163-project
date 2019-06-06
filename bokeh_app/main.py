@@ -20,7 +20,7 @@ from scripts.total import total_tab
 # Read data into dataframes
 df = pd.read_pickle(join(dirname(__file__), 'database', 'data.pkl'))
 
-gdf = geopandas.read_file(join(dirname(__file__), 'database', 'geo.pkl'))
+gdf = pd.read_pickle(join(dirname(__file__), 'database', 'geo.pkl'))
 
 # create tabs
 tab1 = total_tab(df)
