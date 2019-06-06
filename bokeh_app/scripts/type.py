@@ -3,7 +3,7 @@ import hvplot.pandas
 import pandas_bokeh
 from bokeh.plotting import figure
 from bokeh.layouts import column, row, WidgetBox
-from bokeh.models import Panel, ColumnDataSource, HoverTool
+from bokeh.models import Panel, ColumnDataSource, HoverTool, Legend
 from bokeh.palettes import brewer, Spectral6, inferno
 from bokeh.transform import factor_cmap
 from bokeh.models.tools import CustomJSHover
@@ -61,6 +61,7 @@ def type_tab(df):
     p.multi_line(xs='x', ys='y', source=src,
                  line_color='colors', line_width=2,
                  legend='type')
+    p.legend.location = 'top_left'
 
     p.add_tools(HoverTool(show_arrow=False, tooltips=[
         ('Year', '$data_x'),
