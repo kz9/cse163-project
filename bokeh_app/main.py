@@ -1,5 +1,6 @@
 # Pandas for data management
 import pandas as pd
+from os.path import dirname, join
 import geopandas
 from shapely.geometry import Point
 
@@ -17,11 +18,9 @@ from scripts.total import total_tab
 #from scripts.routes import route_tab
 
 # Read data into dataframes
-df = pd.read_pickle('database/data.pkl')
+df = pd.read_pickle(join(dirname(__file__), 'database', 'data.pkl'))
 
-gdf = geopandas.GeoDataFrame(
-        df, crs={'init': 'epsg:3395'},
-        geometry=[Point(x, y) for x, y in zip(df.longitude, df.latitude)])
+gdf = geopandas.read_file(join(dirname(__file__), 'database', 'geo.pkl'))
 
 # create tabs
 tab1 = total_tab(df)

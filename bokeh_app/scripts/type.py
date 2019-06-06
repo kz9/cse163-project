@@ -7,7 +7,7 @@ from bokeh.models import ColumnDataSource
 from bokeh.models.widgets import RangeSlider
 
 
-def total_tab(df):
+def type_tab(df):
     year = RangeSlider(start=1970, end=2017, value=(1970, 2017), step=1,
                        title="Year Range")
 
@@ -23,8 +23,7 @@ def total_tab(df):
         p = figure(plot_height=800, plot_width=800,
                    title='Total attacks over years',
                    x_axis_label='Years',
-                   y_axis_label='Attacks',
-                   output_backend="webgl")
+                   y_axis_label='Attacks')
         p.line(x='iyear', y='eventid', source=src, line_width=2)
         return p
 
