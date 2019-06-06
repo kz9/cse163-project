@@ -3,9 +3,10 @@ import hvplot.pandas
 import pandas_bokeh
 from bokeh.plotting import figure
 from bokeh.layouts import column, row, WidgetBox
-from bokeh.models import Panel, ColumnDataSource, CategoricalColorMapper
+from bokeh.models import Panel, ColumnDataSource, HoverTool
 from bokeh.palettes import brewer, Spectral6, inferno
 from bokeh.transform import factor_cmap
+from bokeh.models.tools import CustomJSHover
 from bokeh.models.widgets import RangeSlider, CheckboxGroup
 
 
@@ -22,14 +23,22 @@ def type_tab(df):
         source = {}
         for i in range(len(types)):
             if 'x' in source.keys():
-                source['x'].append(list(modified[modified['attacktype1_txt'] == types[i]].iyear))
-                source['y'].append(list(modified[modified['attacktype1_txt'] == types[i]].eventid))
-                source['type'].append(list(modified[modified['attacktype1_txt'] == types[i]].attacktype1_txt.unique()))
+                source['x'].append(list(modified[
+                    modified['attacktype1_txt'] == types[i]].iyear))
+                source['y'].append(list(modified[
+                    modified['attacktype1_txt'] == types[i]].eventid))
+                source['type'].append(list(modified[
+                    modified['attacktype1_txt'] == types[i]
+                    ].attacktype1_txt.unique()))
                 source['colors'].append(colormap[types[i]])
             else:
-                source['x'] = [list(modified[modified['attacktype1_txt'] == types[i]].iyear)]
-                source['y'] = [list(modified[modified['attacktype1_txt'] == types[i]].eventid)]
-                source['type'] = [list(modified[modified['attacktype1_txt'] == types[i]].attacktype1_txt.unique())]
+                source['x'] = [list(modified[
+                    modified['attacktype1_txt'] == types[i]].iyear)]
+                source['y'] = [list(modified[
+                    modified['attacktype1_txt'] == types[i]].eventid)]
+                source['type'] = [list(modified[
+                    modified['attacktype1_txt'] == types[i]
+                    ].attacktype1_txt.unique())]
                 source['colors'] = [colormap[types[i]]]
         return ColumnDataSource(source)
 
@@ -47,10 +56,17 @@ def type_tab(df):
     p = figure(plot_height=800, plot_width=800,
                title='Attack Types Distrubuted Over Year',
                x_axis_label='Years',
-               y_axis_label='Types')
+               y_axis_label='Types',
+               output_backend='webgl')
     p.multi_line(xs='x', ys='y', source=src,
                  line_color='colors', line_width=2,
                  legend='type')
+
+    p.add_tools(HoverTool(show_arrow=False, tooltips=[
+        ('Year', '$data_x'),
+        ('Counts', '$data_y'),
+        ('Type', '@type')
+    ]))
 
     year.on_change('value', lambda attr, old, new: update())
     types.on_change('active', lambda attr, old, new: update())
