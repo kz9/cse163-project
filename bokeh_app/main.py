@@ -1,6 +1,6 @@
 # Pandas for data management
 import pandas as pd
-from os.path import dirname, join
+from os.path import dirname, join, basename
 import geopandas
 from shapely.geometry import Point
 
@@ -14,6 +14,7 @@ from bokeh.models.widgets import Tabs
 from scripts.total import total_tab
 from scripts.type import type_tab
 from scripts.map import map_tab
+from scripts.gif import gif_tab
 from scripts.effect import effect_tab
 #from scripts.routes import route_tab
 
@@ -28,12 +29,13 @@ shp = pd.read_pickle(join(dirname(__file__), 'database', 'shp.pkl'))
 tab1 = total_tab(df)
 tab2 = type_tab(df)
 tab3 = map_tab(df, shp)
-tab4 = effect_tab(df)
+tab4 = gif_tab()
+tab5 = effect_tab(df)
 #tab5 = bar_tab(gdf)
 
 
 # Put all the tabs into one application
-tabs = Tabs(tabs=[tab1, tab2, tab3, tab4])
+tabs = Tabs(tabs=[tab1, tab2, tab3, tab4, tab5])
 
 # Put the tabs in the current document for display
 curdoc().add_root(tabs)

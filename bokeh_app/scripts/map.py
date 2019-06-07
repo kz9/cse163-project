@@ -1,15 +1,16 @@
 import pandas as pd
 import hvplot.pandas
-from os.path import dirname, join
+from os.path import dirname, join, basename
 import pandas_bokeh
 import matplotlib.pyplot as plt
 from bokeh.plotting import figure, show, output_file
-from bokeh.layouts import column, row, WidgetBox
+from bokeh.models.glyphs import ImageURL
+from bokeh.layouts import column, row, WidgetBox, layout
 from bokeh.models import Panel, ColumnDataSource, HoverTool, LogColorMapper
 from bokeh.palettes import RdYlBu11 as palettes
 from bokeh.transform import factor_cmap
 from bokeh.models.tools import CustomJSHover
-from bokeh.models.widgets import RangeSlider, CheckboxGroup
+from bokeh.models.widgets import RangeSlider, CheckboxGroup, Div
 
 
 def map_tab(df, shp):
@@ -55,9 +56,6 @@ def map_tab(df, shp):
         hovertool_columns=['country_txt'],
         title="Cumulative Attacks Map")
 
-    i = figure(x_range=(0, 1), y_range=(0, 1))
-    i.image_url(url=[join(dirname(__file__), 'Cat03.jpg')], x=0, y=1, h=500, w=500)
-
-    tab = Panel(child=row(p, i), title='Map')
+    tab = Panel(child=row(p), title='Cumulative Map')
 
     return tab
