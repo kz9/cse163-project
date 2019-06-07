@@ -29,8 +29,8 @@ def total_tab(df):
         ("Counts", "@eventid")
     ]
 
-    p = figure(plot_height=800, plot_width=800,
-               title='Total attacks over years',
+    p = figure(plot_height=600, plot_width=800,
+               title='Total Attacks Over the Years',
                x_axis_label='Years',
                y_axis_label='Attacks',
                tooltips=TOOLTIPS,

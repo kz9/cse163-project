@@ -53,8 +53,8 @@ def type_tab(df):
                           active=list(range(len(unique_types))))
     src = make_data(df)
 
-    p = figure(plot_height=800, plot_width=800,
-               title='Attack Types Distrubuted Over Year',
+    p = figure(plot_height=600, plot_width=800,
+               title='Attack Types',
                x_axis_label='Years',
                y_axis_label='Types',
                output_backend='webgl')

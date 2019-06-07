@@ -1,8 +1,9 @@
 import pandas as pd
 import hvplot.pandas
+from os.path import dirname, join
 import pandas_bokeh
 import matplotlib.pyplot as plt
-from bokeh.plotting import figure
+from bokeh.plotting import figure, show, output_file
 from bokeh.layouts import column, row, WidgetBox
 from bokeh.models import Panel, ColumnDataSource, HoverTool, LogColorMapper
 from bokeh.palettes import RdYlBu11 as palettes
@@ -52,8 +53,11 @@ def map_tab(df, shp):
         slider_name="Year",
         colormap='Viridis',
         hovertool_columns=['country_txt'],
-        title="Attacks Map")
+        title="Cumulative Attacks Map")
 
-    tab = Panel(child=row(p), title='Map')
+    i = figure(x_range=(0, 1), y_range=(0, 1))
+    i.image_url(url=[join(dirname(__file__), 'Cat03.jpg')], x=0, y=1, h=500, w=500)
+
+    tab = Panel(child=row(p, i), title='Map')
 
     return tab

@@ -28,7 +28,7 @@ def effect_tab(df):
         ('Counts', '@eventid')
     ]
 
-    p = figure(plot_height=800, plot_width=800,
+    p = figure(plot_height=600, plot_width=800,
                title='Total attacks over years by month',
                x_axis_label='Month',
                y_axis_label='Attacks',
