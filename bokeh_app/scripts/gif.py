@@ -4,6 +4,10 @@ from bokeh.models.widgets import Div
 
 
 def gif_tab():
+    """
+    use Div function to insert a html line which includes a gif
+    made by pandas and photohop
+    """
     div = Div(text="""<img src='https://lh3.googleusercontent.com/Nl8wk3VZIT-WIMgok-UwRnpa_UdPBnTi8krVUcH6Ae1a-snbc39gvsgnBKnutWjihQWkDs2HpZR_=s1500' alt='Each Year Map'>""",
               width=1, height=1)
 

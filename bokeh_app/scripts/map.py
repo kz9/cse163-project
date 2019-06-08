@@ -1,20 +1,32 @@
 import pandas as pd
-import hvplot.pandas
-from os.path import dirname, join, basename
 import pandas_bokeh
-import matplotlib.pyplot as plt
-from bokeh.plotting import figure, show, output_file
-from bokeh.models.glyphs import ImageURL
-from bokeh.layouts import column, row, WidgetBox, layout
-from bokeh.models import Panel, ColumnDataSource, HoverTool, LogColorMapper
-from bokeh.palettes import RdYlBu11 as palettes
-from bokeh.transform import factor_cmap
-from bokeh.models.tools import CustomJSHover
-from bokeh.models.widgets import RangeSlider, CheckboxGroup, Div
+from bokeh.layouts import row
+from bokeh.models import Panel
 
 
 def map_tab(df, shp):
-    def make_data(gdf, shp, start=1970, end=2017):
+    """
+    Make a tab wich contains a map colored by the number of
+    terrorism attacks
+    Parameters:
+        df (DataFrame): a pandas dataframe
+        shp (GeoDataFrame): a geopandas dataframe
+
+    Returns:
+        tab: a bokeh object
+    """
+    def make_data(df, shp, start=1970, end=2017):
+        """
+        Modify data for plotting
+        Parameters:
+            df (DataFrame): a pandas dataframe
+            shp (GeoDataFrame): a geopandas dataframe
+            start (int): start year number
+            end (int): end year number
+
+        Returns:
+            GeoDataFrame: contains map data
+        """
         modified = df[(df['iyear'] >= start) &
                       (df['iyear'] <= end)]
         modified = modified.groupby(['country_txt', 'iyear'],
@@ -41,11 +53,12 @@ def map_tab(df, shp):
                              left_on='SOVEREIGNT', how='inner')
         return modified
 
+    # Setup needed variable
     src = make_data(df, shp)
     slider_columns = ['year_{}'.format(i) for i in range(1970, 2018)]
-
     srange = range(1970, 2018)
 
+    # Map plot
     p = src.plot_bokeh(
         figsize=(900, 600),
         simplify_shapes=5000,
@@ -56,6 +69,7 @@ def map_tab(df, shp):
         hovertool_columns=['country_txt'],
         title="Cumulative Attacks Map")
 
+    # Setup tab structure and name
     tab = Panel(child=row(p), title='Cumulative Map')
 
     return tab
