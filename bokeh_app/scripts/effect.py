@@ -1,5 +1,5 @@
 from bokeh.plotting import figure
-from bokeh.layouts import layout, column
+from bokeh.layouts import column
 from bokeh.models import Panel, ColumnDataSource
 from bokeh.models.widgets import Slider
 
@@ -17,6 +17,7 @@ def effect_tab(df):
     # Setup needed variable
     abb = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May', 'June', 'July',
            'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
+
     def make_data(df, year=1970, month=abb):
         """
         Modify the dataframe for plotting
@@ -99,8 +100,7 @@ def effect_tab(df):
               fill_color='white')
 
     # Setup tab name and structure
-    tab = Panel(child=layout([[year, column(p1, p2)]],
-                             sizing_mode="scale_both"),
+    tab = Panel(child=column(year, p1, p2),
                 title='Year Effect Attacks')
 
     return tab
