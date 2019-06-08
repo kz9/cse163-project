@@ -1,0 +1,4 @@
+pandas
+geopandas
+pandas_bokeh
+bokeh
