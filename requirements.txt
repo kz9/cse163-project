@@ -1,3 +1,4 @@
+zip
 pandas
 geopandas
 pandas_bokeh
