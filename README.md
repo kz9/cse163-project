@@ -1,8 +1,8 @@
 # Research Questions
 ## How Have Terrorist Attacks Changed Over the Years?
 > Authors: Kezhao Jiang, Vitaliy Kaparchuk
-> Please click this URL for better version README.md
-> https://kz9.github.io/cse163-project/
+
+> Please click this URL for better version README.md https://kz9.github.io/cse163-project/
 
 #### Research Questions
 ---
