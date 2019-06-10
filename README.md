@@ -4,6 +4,7 @@
 
 
 #### Research Questions
+---
 1. Are there any points in time from which the number of terrorist attacks dramatically increase? If there are, we want to find out exactly what was going on at this specific point in time to cause the large change, such as the beginning of a war or a period of poor national relations, or some other event. This question would look at longer intervals, such as years, unlike the intra-year trends of Question 4.
 	- **Answer**: There were two years where the number of attacks drastically increased. These years were 2004 and 2011. Although the number increased following these two years, the increase was much more pronounced in 2011.
 
@@ -17,18 +18,22 @@
 	- **Answer**: Looking at each individual year there is no pattern. In the total counts, however, we see that more attacks happen in the Northern Hemisphere spring and decrease in the Northern Hemisphere winter.
 
 #### Motivation and Background
+---
 
 These questions and the accompanying visualizations will allow us to observe what variables or events have an influence on the amount and kind of terrorist attacks that happen. We might be able to narrow down to specific types of events that increase the amount of attacks, to see what kinds of events or variables we need to watch out for in the present day. Knowing how these variables affect the amount and types of attacks can help us be better prepared, or at at least anticipate what can happen, if similar events happen again.
 
 #### Dataset
+---
 
 The dataset that we are using is the Global Terrorism Database. It is provided by the University of Maryland. The data for the events goes back from 1970 to the end of 2017, with 181,692 total events. Each row is a single event that contains information about each event such as the time (year, month, day), the place (region, country, state, city, specific location), the latitude and longitude, a summary of the event, the attack type, and the targets. It also has the organization or group that the attacker(s) belonged to, their motives, the weapons used, damage caused, and the outcome, along with other information about the event. The dataset has all the information we would need for our research questions, and plenty of other data if we decide or need to change a question. The dataset also comes with a codebook that contains information on each individual column in the table. It also comes with a geodatabase folder which contains all the shape files necessary for creating a map for the dataset.
 
 URL: https://www.start.umd.edu/gtd/contact/
 
 #### Methodology
+---
 
 Make one or several plots for each question:
+
     1. Plot the total number of attacks over the years and find any times where they drastically increased. We can then see what major events happened around that time that may have had a direct influence on the number of attacks.
     2. Separate the attacks into several major types and make a plot that contains a line for each different kind of attack. We can then try to see things like if any kind of attack is “disappearing”, if a certain kind of attack is increasing in number, or how the overall amount of different types compare to each other.
     3. Use geographical data to visualize the number of attacks using a heat map, possibly in different years as well, and see what places tend to have more attacks, or places that have a lot of attacks that we don’t hear about.
