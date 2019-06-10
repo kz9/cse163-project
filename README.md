@@ -76,6 +76,7 @@ We used the Bokeh interactive visualization library to create tabs with interact
 
 
 #### Work Plan & Evaluation
+---
 
 1. Make the necessary plots for each problem and separate the work through the github issue function.
 2. Write a markdown file for each plot and separate the work through github issue function as well.
@@ -85,14 +86,17 @@ We used the Bokeh interactive visualization library to create tabs with interact
 We did not include any estimated times for our work plan, but we can confidently say that any estimates we would have included would have been underestimations, especially for creating the interactivity for the plots. We also changed some things, like changing from the dash library to the bokeh library.
 
 #### Testing
+---
 
 For testing our code, we found that the best way was to plot the data that we have and see whether it corresponds to actual data and events. For example, we know from our research that most of the attacks happening right now are concentrated in Iraq and India/Pakistan, and we plotted to see whether our code was correct and gave us the correct visualization. The interactivity of the page and the animation of the yearly attacks also gave us insight into whether our data manipulation was done correctly, with us being able to change and view different years, and then researching years of interest to see if that’s what was really going on at that time.
 
 #### Presentation Option
+---
 
 We are going to be doing the video option for the final presentation.
 
 #### Collaboration
+---
 
 **Authors**: Vitaliy Kaparchuk, Kezhao Jiang
 No other people helped with this project.
