@@ -34,10 +34,10 @@ URL: https://www.start.umd.edu/gtd/contact/
 
 Make one or several plots for each question:
 
-    1. Plot the total number of attacks over the years and find any times where they drastically increased. We can then see what major events happened around that time that may have had a direct influence on the number of attacks.
-    2. Separate the attacks into several major types and make a plot that contains a line for each different kind of attack. We can then try to see things like if any kind of attack is “disappearing”, if a certain kind of attack is increasing in number, or how the overall amount of different types compare to each other.
-    3. Use geographical data to visualize the number of attacks using a heat map, possibly in different years as well, and see what places tend to have more attacks, or places that have a lot of attacks that we don’t hear about.
-    4. Plot data where the timeframe of the plot is a single year, possibly plotting several years on the same graph and observing whether certain times of the year can have an influence on attacks. It doesn’t seem like something that could have an effect but it would be very interesting if we did see a pattern.
+1. Plot the total number of attacks over the years and find any times where they drastically increased. We can then see what major events happened around that time that may have had a direct influence on the number of attacks.
+2. Separate the attacks into several major types and make a plot that contains a line for each different kind of attack. We can then try to see things like if any kind of attack is “disappearing”, if a certain kind of attack is increasing in number, or how the overall amount of different types compare to each other.
+3. Use geographical data to visualize the number of attacks using a heat map, possibly in different years as well, and see what places tend to have more attacks, or places that have a lot of attacks that we don’t hear about.
+4. Plot data where the timeframe of the plot is a single year, possibly plotting several years on the same graph and observing whether certain times of the year can have an influence on attacks. It doesn’t seem like something that could have an effect but it would be very interesting if we did see a pattern.
 
 We are planning on adding interactivity for the plots as well, where the variables in the plots can be changed by a user so that the relationship between two chosen variables can be observed.
 
@@ -57,22 +57,22 @@ We are planning on adding interactivity for the plots as well, where the variabl
 ---
 
 We used the Bokeh interactive visualization library to create tabs with interactive plots that can be placed on a page that is hosted on your local server. The project was done with GitHub so the client can clone the repository and host the webpage on their own machine to interact with the plots.
-    1. _Client needs to be using Python version 3.7.3 and install pandas, geopandas, and pandas_bokeh using the following commands in their terminal_:
-        - conda install bokeh
-        - conda install pandas
-        - conda install geopandas
-        - pip install pandas_bokeh (pandas_bokeh library can only be installed by pip)
-    2. _Clone the repository_:
-        - git clone https://github.com/kz9/cse163-project.git
-    3. _Go into the bokeh_app directory and unzip the data.zip file into a folder called database_:
-        - cd cse163-project/bokeh_app/
-        - mkdir database
-        - unzip data.zip -d database/
-    4. _Change directory to outside of bokeh_app folder_
-        - cd ..
-    5. _Create the local website at the port 5006(localhost:5006/bokeh_app)_
-        - bokeh serve --show bokeh_app
-    6. _The webpage will open on your default browser. Please wait for all resources to load_.
+1. _Client needs to be using Python version 3.7.3 and install pandas, geopandas, and pandas_bokeh using the following commands in their terminal_:
+    - conda install bokeh
+    - conda install pandas
+    - conda install geopandas
+    - pip install pandas_bokeh (pandas_bokeh library can only be installed by pip)
+2. _Clone the repository_:
+    - git clone https://github.com/kz9/cse163-project.git
+3. _Go into the bokeh_app directory and unzip the data.zip file into a folder called database_:
+    - cd cse163-project/bokeh_app/
+    - mkdir database
+    - unzip data.zip -d database/
+4. _Change directory to outside of bokeh_app folder_
+    - cd ..
+5. _Create the local website at the port 5006(localhost:5006/bokeh_app)_
+    - bokeh serve --show bokeh_app
+6. _The webpage will open on your default browser. Please wait for all resources to load_.
 
 
 #### Work Plan & Evaluation
