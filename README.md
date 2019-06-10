@@ -42,6 +42,7 @@ Make one or several plots for each question:
 We are planning on adding interactivity for the plots as well, where the variables in the plots can be changed by a user so that the relationship between two chosen variables can be observed.
 
 #### Results
+---
 
 1. From 1970 to 2017, there were two years where the number of attacks drastically increased from their previous levels. These two years were 2004 and 2011. After 2004, the total number of attacks quadrupled in just four years, going from about 1200 to 4800 total attacks in 2008. We looked at the major news headlines and events from 2004 and surrounding years saw that this coincided with the fact that the Iraq War had begun the year before and then American troops were withdrawn in 2009, which was the span of years where the attacks quadrupled. The other major year was 2011, where attacks tripled from about 5000 to almost 17000 in just three years. Looking at the major events in 2011, we saw that this was the year that the civil war began in Syria. This contributed to a huge rise in the number of attacks, especially when this conflict began overflowing into other neighboring countries like Iraq, making the situation much worse. Although we didn’t focus on times where the number of attacks declined, since the end of 2014 the number of attacks has been sharply decreasing (up to 2017, which is where our dataset ends).
 
@@ -53,25 +54,25 @@ We are planning on adding interactivity for the plots as well, where the variabl
 4. When we looked at the trend of attacks per month in every year, there wasn’t a pattern or trend that particularly stood out. We didn’t really expect there to be much correlation with the number of attacks and the time of year, but when we graphed the total number of attacks per month there was an interesting trend that we saw. There appear to be more total attacks that have happened in the Northern Hemisphere spring, and less attacks in the Northern Hemisphere winter. When we look at the counts, we can see that 25% more attacks have occured in May compared to December, the high and low points of the graph (16,875 attacks compared 13,496). We have found no reason for this trend to be significant, and it is entirely possible that this is due to chance, or there may have been a few years with a very large number of events in one month that caused this “trend” to appear. Even so, it was quite interesting to see this.
 
 #### Reproducing Results
+---
 
 We used the Bokeh interactive visualization library to create tabs with interactive plots that can be placed on a page that is hosted on your local server. The project was done with GitHub so the client can clone the repository and host the webpage on their own machine to interact with the plots.
-    - Steps:
-        1. __Client needs to be using Python version 3.7.3 and install pandas, geopandas, and pandas_bokeh using the following commands in their terminal__:
-            - conda install bokeh
-            - conda install pandas
-            - conda install geopandas
-            - pip install pandas_bokeh (pandas_bokeh library can only be installed by pip)
-        2. __Clone the repository__:
-	        - git clone https://github.com/kz9/cse163-project.git
-        3. __Go into the bokeh_app directory and unzip the data.zip file into a folder called database__:
-	        - cd cse163-project/bokeh_app/
-	        - mkdir database
-	        - unzip data.zip -d database/
-        4. __Change directory to outside of bokeh_app folder__
-	        - cd ..
-        5. __Create the local website at the port 5006(localhost:5006/bokeh_app)__
-	        - bokeh serve --show bokeh_app
-        6. __The webpage will open on your default browser. Please wait for all resources to load__.
+    1. _Client needs to be using Python version 3.7.3 and install pandas, geopandas, and pandas_bokeh using the following commands in their terminal_:
+        - conda install bokeh
+        - conda install pandas
+        - conda install geopandas
+        - pip install pandas_bokeh (pandas_bokeh library can only be installed by pip)
+    2. _Clone the repository_:
+        - git clone https://github.com/kz9/cse163-project.git
+    3. _Go into the bokeh_app directory and unzip the data.zip file into a folder called database_:
+        - cd cse163-project/bokeh_app/
+        - mkdir database
+        - unzip data.zip -d database/
+    4. _Change directory to outside of bokeh_app folder_
+        - cd ..
+    5. _Create the local website at the port 5006(localhost:5006/bokeh_app)_
+        - bokeh serve --show bokeh_app
+    6. _The webpage will open on your default browser. Please wait for all resources to load_.
 
 
 #### Work Plan & Evaluation
